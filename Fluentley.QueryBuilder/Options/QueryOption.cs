@@ -18,13 +18,13 @@ namespace Fluentley.QueryBuilder.Options
 
         internal List<Expression<Func<T, object>>> EagerLoads { get; set; }
 
-        public IQueryable<T> Query { get; set; }
-        public IQueryable<T> QueryWithNoPaging { get; set; }
-       
         //Paging Properties
         public bool IsPaged { get; set; }
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
+
+        public IQueryable<T> Query { get; set; }
+        public IQueryable<T> QueryWithNoPaging { get; set; }
 
 
         public IQueryOption<T> DynamicSort(string propertyName, string direction = "asc")
