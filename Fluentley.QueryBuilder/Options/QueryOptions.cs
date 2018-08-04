@@ -1,0 +1,137 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Linq.Expressions;
+
+namespace Fluentley.QueryBuilder.Options
+{
+    internal class QueryOptions<T> : IQueryOptions<T>
+    {
+        public QueryOptions(IQueryable<T> query)
+        {
+            EagerLoads = new List<Expression<Func<T, object>>>();
+            IsPaged = false;
+            Query = query;
+            QueryWithNoPaging = query;
+        }
+
+        internal List<Expression<Func<T, object>>> EagerLoads { get; set; }
+
+        public IQueryable<T> Query { get; set; }
+        public IQueryable<T> QueryWithNoPaging { get; set; }
+
+        //Paging Properties
+        public bool IsPaged { get; set; }
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
+
+
+        public IQueryOptions<T> DynamicSort(string propertyName, string direction = "asc")
+        {
+            if (string.IsNullOrWhiteSpace(direction))
+                direction = "asc";
+
+            if (string.IsNullOrWhiteSpace(propertyName))
+                return this;
+
+
+            var property = typeof(T).GetProperties().FirstOrDefault(x => x.Name.ToLower() == propertyName.ToLower());
+            if (property == null)
+                return this;
+
+
+            var sortByProperty = PropertySelector(property.Name);
+
+            switch (direction.ToLower() == "asc")
+            {
+                default:
+                    Query = Query.OrderBy(sortByProperty);
+                    break;
+                case false:
+                    Query = Query.OrderByDescending(sortByProperty);
+                    break;
+            }
+
+            return this;
+        }
+
+
+        public IQueryOptions<T> DynamicWhere(string filter)
+        {
+            filter = filter.Replace("\\", string.Empty);
+            Query = Query.Where(filter);
+            QueryWithNoPaging = QueryWithNoPaging.Where(filter);
+            return this;
+        }
+
+        public IQueryOptions<T> Paging(int pageIndex, int pageSize)
+        {
+            if (pageSize == 0)
+            {
+                IsPaged = false;
+                return this;
+            }
+
+            IsPaged = true;
+            PageIndex = pageIndex;
+            PageSize = pageSize;
+
+
+            Query = Query.Skip(pageIndex * pageSize).Take(pageSize);
+            return this;
+        }
+
+
+        public IQueryOptions<T> DynamicContains(string propertyName, string value)
+        {
+            if (string.IsNullOrWhiteSpace(propertyName))
+                return this;
+
+
+            var property = typeof(T).GetProperties().FirstOrDefault(x => x.Name.ToLower() == propertyName.ToLower());
+            if (property == null)
+                return this;
+
+            var selectedProperty = PropertySelector(property.Name);
+            Query = Query.Where(
+                x => selectedProperty.Compile().Invoke(x).ToString().ToLower().Contains(value.ToLower()));
+            QueryWithNoPaging = QueryWithNoPaging.Where(x =>
+                selectedProperty.Compile().Invoke(x).ToString().ToLower().Contains(value.ToLower()));
+            return this;
+        }
+
+        public IQueryOptions<T> QueryBy(IQueryable<T> query)
+        {
+            Query = query;
+            QueryWithNoPaging = query;
+            return this;
+        }
+
+
+        public IQueryOptions<T> QueryBy(Func<IQueryable<T>, IQueryable<T>> query)
+        {
+            Query = query(Query);
+            QueryWithNoPaging = query(QueryWithNoPaging);
+            return this;
+        }
+
+        public IQueryOptions<T> EagerLoad(params Expression<Func<T, object>>[] eagerLoads)
+        {
+            if (eagerLoads.Any())
+                EagerLoads.AddRange(eagerLoads);
+            return this;
+        }
+
+
+        private static Expression<Func<T, object>> PropertySelector(string propertyName)
+        {
+            var arg = Expression.Parameter(typeof(T), "x");
+            var property = Expression.Property(arg, propertyName);
+            //return the property as object
+            var conv = Expression.Convert(property, typeof(object));
+            var exp = Expression.Lambda<Func<T, object>>(conv, arg);
+            return exp;
+        }
+    }
+}
