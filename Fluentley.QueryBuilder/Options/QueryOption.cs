@@ -20,7 +20,7 @@ namespace Fluentley.QueryBuilder.Options
 
         public IQueryable<T> Query { get; set; }
         public IQueryable<T> QueryWithNoPaging { get; set; }
-
+       
         //Paging Properties
         public bool IsPaged { get; set; }
         public int PageIndex { get; set; }

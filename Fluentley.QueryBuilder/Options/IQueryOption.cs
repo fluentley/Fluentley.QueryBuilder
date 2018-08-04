@@ -8,9 +8,6 @@ namespace Fluentley.QueryBuilder.Options
     {
         IQueryable<T> Query { get; }
         IQueryable<T> QueryWithNoPaging { get; }
-        bool IsPaged { get; }
-        int PageIndex { get;  }
-        int PageSize { get; }
         IQueryOption<T> DynamicSort(string propertyName, string direction = "asc");
         IQueryOption<T> DynamicWhere(string filter);
         IQueryOption<T> Paging(int pageIndex, int pageSize);
