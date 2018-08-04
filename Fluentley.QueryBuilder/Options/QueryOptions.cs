@@ -126,12 +126,12 @@ namespace Fluentley.QueryBuilder.Options
 
         private static Expression<Func<T, object>> PropertySelector(string propertyName)
         {
-            var arg = Expression.Parameter(typeof(T), "x");
-            var property = Expression.Property(arg, propertyName);
+            var argument = Expression.Parameter(typeof(T), "x");
+            var property = Expression.Property(argument, propertyName);
             //return the property as object
-            var conv = Expression.Convert(property, typeof(object));
-            var exp = Expression.Lambda<Func<T, object>>(conv, arg);
-            return exp;
+            var unaryExpression = Expression.Convert(property, typeof(object));
+            var expression = Expression.Lambda<Func<T, object>>(unaryExpression, argument);
+            return expression;
         }
     }
 }
