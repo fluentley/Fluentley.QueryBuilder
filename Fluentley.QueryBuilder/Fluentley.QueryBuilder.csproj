@@ -10,7 +10,7 @@
    
     <Description>Fluentley QueryBuilder focuses on advanced query abstraction for queryable objects.</Description>
    
-    <Authors>Emre@Fluently</Authors>
+    <Authors>Emre@Fluentley</Authors>
    
     <Company>Fluentley</Company>
    
@@ -18,13 +18,13 @@
    
     <NeutralLanguage>en-US</NeutralLanguage>
    
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0-alpha.1</Version>
    
     <PackageProjectUrl>https://github.com/fluentley/Fluentley.QueryBuilder</PackageProjectUrl>
    
     <PackageLicenseUrl>https://github.com/fluentley/Fluentley.QueryBuilder/blob/master/LICENSE</PackageLicenseUrl>
    
-    <PackageIconUrl>https://github.com/fluentley/Fluentley.QueryBuilder/blob/master/FluentleyLogo3.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/fluentley/Fluentley.QueryBuilder/raw/master/FluentleyLogo3.png</PackageIconUrl>
    
     <RepositoryUrl>https://github.com/fluentley/Fluentley.QueryBuilder</RepositoryUrl>
    
