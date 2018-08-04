@@ -7,32 +7,32 @@ namespace Fluentley.QueryBuilder
 {
     public static class QueryBuilderExtensions
     {
-        public static T[] QueryOn<T>(this T[] queryable, Action<IQueryOptions<T>> queryAction)
+        public static T[] QueryOn<T>(this T[] queryable, Action<IQueryOption<T>> queryAction)
         {
-            var queryOption = new QueryOptions<T>(queryable.AsQueryable());
+            var queryOption = new QueryOption<T>(queryable.AsQueryable());
             queryAction?.Invoke(queryOption);
             return queryOption.Query.AsQueryable().ToArray();
         }
 
-        public static IEnumerable<T> QueryOn<T>(this IEnumerable<T> queryable, Action<IQueryOptions<T>> queryAction)
+        public static IEnumerable<T> QueryOn<T>(this IEnumerable<T> queryable, Action<IQueryOption<T>> queryAction)
         {
-            var queryOption = new QueryOptions<T>(queryable.AsQueryable());
+            var queryOption = new QueryOption<T>(queryable.AsQueryable());
             queryAction?.Invoke(queryOption);
             return queryOption.Query;
         }
 
 
         public static IEnumerable<T> QueryOn<T>(this Func<IEnumerable<T>> function,
-            Action<IQueryOptions<T>> queryAction)
+            Action<IQueryOption<T>> queryAction)
         {
-            var queryOption = new QueryOptions<T>(function().AsQueryable());
+            var queryOption = new QueryOption<T>(function().AsQueryable());
             queryAction?.Invoke(queryOption);
             return queryOption.Query;
         }
 
-        public static IEnumerable<T> QueryOn<T>(this Func<T[]> function, Action<IQueryOptions<T>> queryAction)
+        public static IEnumerable<T> QueryOn<T>(this Func<T[]> function, Action<IQueryOption<T>> queryAction)
         {
-            var queryOption = new QueryOptions<T>(function().AsQueryable());
+            var queryOption = new QueryOption<T>(function().AsQueryable());
             queryAction?.Invoke(queryOption);
             return queryOption.Query;
         }

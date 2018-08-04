@@ -6,9 +6,9 @@ using System.Linq.Expressions;
 
 namespace Fluentley.QueryBuilder.Options
 {
-    internal class QueryOptions<T> : IQueryOptions<T>
+    internal class QueryOption<T> : IQueryOption<T>
     {
-        public QueryOptions(IQueryable<T> query)
+        public QueryOption(IQueryable<T> query)
         {
             EagerLoads = new List<Expression<Func<T, object>>>();
             IsPaged = false;
@@ -27,7 +27,7 @@ namespace Fluentley.QueryBuilder.Options
         public int PageSize { get; set; }
 
 
-        public IQueryOptions<T> DynamicSort(string propertyName, string direction = "asc")
+        public IQueryOption<T> DynamicSort(string propertyName, string direction = "asc")
         {
             if (string.IsNullOrWhiteSpace(direction))
                 direction = "asc";
@@ -57,7 +57,7 @@ namespace Fluentley.QueryBuilder.Options
         }
 
 
-        public IQueryOptions<T> DynamicWhere(string filter)
+        public IQueryOption<T> DynamicWhere(string filter)
         {
             filter = filter.Replace("\\", string.Empty);
             Query = Query.Where(filter);
@@ -65,7 +65,7 @@ namespace Fluentley.QueryBuilder.Options
             return this;
         }
 
-        public IQueryOptions<T> Paging(int pageIndex, int pageSize)
+        public IQueryOption<T> Paging(int pageIndex, int pageSize)
         {
             if (pageSize == 0)
             {
@@ -83,7 +83,7 @@ namespace Fluentley.QueryBuilder.Options
         }
 
 
-        public IQueryOptions<T> DynamicContains(string propertyName, string value)
+        public IQueryOption<T> DynamicContains(string propertyName, string value)
         {
             if (string.IsNullOrWhiteSpace(propertyName))
                 return this;
@@ -101,7 +101,7 @@ namespace Fluentley.QueryBuilder.Options
             return this;
         }
 
-        public IQueryOptions<T> QueryBy(IQueryable<T> query)
+        public IQueryOption<T> QueryBy(IQueryable<T> query)
         {
             Query = query;
             QueryWithNoPaging = query;
@@ -109,14 +109,14 @@ namespace Fluentley.QueryBuilder.Options
         }
 
 
-        public IQueryOptions<T> QueryBy(Func<IQueryable<T>, IQueryable<T>> query)
+        public IQueryOption<T> QueryBy(Func<IQueryable<T>, IQueryable<T>> query)
         {
             Query = query(Query);
             QueryWithNoPaging = query(QueryWithNoPaging);
             return this;
         }
 
-        public IQueryOptions<T> EagerLoad(params Expression<Func<T, object>>[] eagerLoads)
+        public IQueryOption<T> EagerLoad(params Expression<Func<T, object>>[] eagerLoads)
         {
             if (eagerLoads.Any())
                 EagerLoads.AddRange(eagerLoads);
