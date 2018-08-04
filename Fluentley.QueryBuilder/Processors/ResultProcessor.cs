@@ -11,7 +11,6 @@ namespace Fluentley.QueryBuilder.Processors
         {
             var queryResult = new QueryResult<IQueryable<T>>();
 
-
             if (processedQueryOption.IsPaged)
 
                 queryResult.Paging = new QueryPaging

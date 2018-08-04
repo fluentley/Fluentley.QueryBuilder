@@ -34,11 +34,9 @@ namespace Fluentley.QueryBuilder.Options
             if (string.IsNullOrWhiteSpace(propertyName))
                 return this;
 
-
             var property = typeof(T).GetProperties().FirstOrDefault(x => x.Name.ToLower() == propertyName.ToLower());
             if (property == null)
                 return this;
-
 
             var sortByProperty = PropertySelector(property.Name);
 
@@ -75,7 +73,6 @@ namespace Fluentley.QueryBuilder.Options
             PageIndex = pageIndex;
             PageSize = pageSize;
 
-
             Query = Query.Skip(pageIndex * pageSize).Take(pageSize);
             return this;
         }
@@ -84,7 +81,6 @@ namespace Fluentley.QueryBuilder.Options
         {
             if (string.IsNullOrWhiteSpace(propertyName))
                 return this;
-
 
             var property = typeof(T).GetProperties().FirstOrDefault(x => x.Name.ToLower() == propertyName.ToLower());
             if (property == null)
