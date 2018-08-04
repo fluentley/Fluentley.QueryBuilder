@@ -14,36 +14,36 @@ namespace Fluentley.QueryBuilder
 
         #region Paged Methods
 
-        public static IQueryResult<IQueryable<T>> QueryPagedOn<T>(this T[] queryable,
+        public static IQueryResult<IQueryable<T>> QueryOn<T>(this T[] queryable,
             Action<IQueryOption<T>> queryAction)
         {
-            return QueryPagedOn(queryable.AsQueryable(), queryAction);
+            return QueryOn(queryable.AsQueryable(), queryAction);
         }
 
-        public static IQueryResult<IQueryable<T>> QueryPagedOn<T>(this IQueryable<T> queryable,
+        public static IQueryResult<IQueryable<T>> QueryOn<T>(this IQueryable<T> queryable,
             Action<IQueryOption<T>> queryAction)
         {
             var processed = OptionProcessor.Process<IQueryOption<T>, QueryOption<T>, T>(queryAction, queryable);
             return ResultProcessor.Process(processed);
         }
 
-        public static IQueryResult<IQueryable<T>> QueryPagedOn<T>(this IEnumerable<T> queryable,
+        public static IQueryResult<IQueryable<T>> QueryOn<T>(this IEnumerable<T> queryable,
             Action<IQueryOption<T>> queryAction)
         {
-            return QueryPagedOn(queryable.AsQueryable(), queryAction);
+            return QueryOn(queryable.AsQueryable(), queryAction);
         }
 
 
-        public static IQueryResult<IQueryable<T>> QueryPagedOn<T>(this Func<IEnumerable<T>> function,
+        public static IQueryResult<IQueryable<T>> QueryOn<T>(this Func<IEnumerable<T>> function,
             Action<IQueryOption<T>> queryAction)
         {
-            return function().QueryPagedOn(queryAction);
+            return function().QueryOn(queryAction);
         }
 
-        public static IQueryResult<IQueryable<T>> QueryPagedOn<T>(this Func<T[]> function,
+        public static IQueryResult<IQueryable<T>> QueryOn<T>(this Func<T[]> function,
             Action<IQueryOption<T>> queryAction)
         {
-            return function().QueryPagedOn(queryAction);
+            return function().QueryOn(queryAction);
         }
 
         #endregion
