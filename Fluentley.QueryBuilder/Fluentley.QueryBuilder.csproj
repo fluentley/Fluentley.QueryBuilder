@@ -14,7 +14,7 @@
    
     <Company>Fluentley</Company>
    
-    <PackageTags />
+    <PackageTags>Fluent QueryBuilder, Fluentley, EntityFramework, Linq</PackageTags>
    
     <NeutralLanguage>en-US</NeutralLanguage>
    
@@ -23,6 +23,12 @@
     <PackageProjectUrl>https://github.com/fluentley/Fluentley.QueryBuilder</PackageProjectUrl>
    
     <PackageLicenseUrl>https://github.com/fluentley/Fluentley.QueryBuilder/blob/master/LICENSE</PackageLicenseUrl>
+   
+    <PackageIconUrl>https://github.com/fluentley/Fluentley.QueryBuilder/blob/master/FluentleyLogo3.png</PackageIconUrl>
+   
+    <RepositoryUrl>https://github.com/fluentley/Fluentley.QueryBuilder</RepositoryUrl>
+   
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
