@@ -19,8 +19,8 @@ namespace Fluentley.QueryBuilder.Processors
                     IsPaged = true,
                     CurrentPageIndex = processedQueryOption.PageIndex,
                     TotalPages =
-                        (int)Math.Ceiling(processedQueryOption.QueryWithNoPaging.ToList().Count /
-                                           (double)processedQueryOption.PageSize),
+                        (int) Math.Ceiling(processedQueryOption.QueryWithNoPaging.ToList().Count /
+                                           (double) processedQueryOption.PageSize),
                     TotalRecords = processedQueryOption.QueryWithNoPaging.ToList().Count
                 };
 

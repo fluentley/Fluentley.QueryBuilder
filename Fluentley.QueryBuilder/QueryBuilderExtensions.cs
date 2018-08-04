@@ -33,7 +33,6 @@ namespace Fluentley.QueryBuilder
             return QueryOn(queryable.AsQueryable(), queryAction);
         }
 
-
         public static IQueryResult<IQueryable<T>> QueryOn<T>(this Func<IEnumerable<T>> function,
             Action<IQueryOption<T>> queryAction)
         {

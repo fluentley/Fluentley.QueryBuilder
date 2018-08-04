@@ -26,7 +26,6 @@ namespace Fluentley.QueryBuilder.Options
         public IQueryable<T> Query { get; set; }
         public IQueryable<T> QueryWithNoPaging { get; set; }
 
-
         public IQueryOption<T> DynamicSort(string propertyName, string direction = "asc")
         {
             if (string.IsNullOrWhiteSpace(direction))
@@ -56,7 +55,6 @@ namespace Fluentley.QueryBuilder.Options
             return this;
         }
 
-
         public IQueryOption<T> DynamicWhere(string filter)
         {
             filter = filter.Replace("\\", string.Empty);
@@ -81,7 +79,6 @@ namespace Fluentley.QueryBuilder.Options
             Query = Query.Skip(pageIndex * pageSize).Take(pageSize);
             return this;
         }
-
 
         public IQueryOption<T> DynamicContains(string propertyName, string value)
         {
@@ -108,7 +105,6 @@ namespace Fluentley.QueryBuilder.Options
             return this;
         }
 
-
         public IQueryOption<T> QueryBy(Func<IQueryable<T>, IQueryable<T>> query)
         {
             Query = query(Query);
@@ -122,7 +118,6 @@ namespace Fluentley.QueryBuilder.Options
                 EagerLoads.AddRange(eagerLoads);
             return this;
         }
-
 
         private static Expression<Func<T, object>> PropertySelector(string propertyName)
         {
