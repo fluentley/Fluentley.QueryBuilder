@@ -7,9 +7,9 @@ namespace Fluentley.QueryBuilder.Processors
 {
     internal class ResultProcessor
     {
-        public IQueryResult<IQueryable<T>> Process<T>(QueryOption<T> processedQueryOption)
+        public IQueryResult<T> Process<T>(QueryOption<T> processedQueryOption)
         {
-            var queryResult = new QueryResult<IQueryable<T>>();
+            var queryResult = new QueryResult<T>();
 
             if (processedQueryOption.IsPaged)
 
@@ -18,11 +18,12 @@ namespace Fluentley.QueryBuilder.Processors
                     IsPaged = true,
                     CurrentPageIndex = processedQueryOption.PageIndex,
                     TotalPages =
-                        (int) Math.Ceiling(processedQueryOption.QueryWithNoPaging.ToList().Count /
+                        (int) Math.Ceiling(processedQueryOption.QueryWithNoPaging.Count() /
                                            (double) processedQueryOption.PageSize),
-                    TotalRecords = processedQueryOption.QueryWithNoPaging.ToList().Count
+                    TotalRecords = processedQueryOption.QueryWithNoPaging.Count()
                 };
 
+            queryResult.EagerLoads = processedQueryOption.EagerLoads;
             queryResult.Data = processedQueryOption.Query;
             return queryResult;
         }

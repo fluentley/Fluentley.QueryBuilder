@@ -16,7 +16,7 @@ namespace Fluentley.QueryBuilder.Options
             QueryWithNoPaging = query;
         }
 
-        internal List<Expression<Func<T, object>>> EagerLoads { get; set; }
+        internal List<Expression<Func<T, object>>> EagerLoads { get; }
 
         //Paging Properties
         public bool IsPaged { get; set; }

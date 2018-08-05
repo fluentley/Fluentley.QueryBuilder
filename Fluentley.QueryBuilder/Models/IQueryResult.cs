@@ -1,8 +1,14 @@
-﻿namespace Fluentley.QueryBuilder.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+
+namespace Fluentley.QueryBuilder.Models
 {
-    public interface IQueryResult<out T>
+    public interface IQueryResult<T>
     {
         QueryPaging Paging { get; }
-        T Data { get; }
+        IQueryable<T> Data { get; }
+         List<Expression<Func<T, object>>> EagerLoads { get; set; }
     }
 }
