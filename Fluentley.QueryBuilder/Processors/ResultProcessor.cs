@@ -7,7 +7,7 @@ namespace Fluentley.QueryBuilder.Processors
 {
     internal class ResultProcessor
     {
-        public IQueryResult<IQueryable<T>> Process<T>(QueryOption<T> processedQueryOption)
+        public static IQueryResult<IQueryable<T>> Process<T>(QueryOption<T> processedQueryOption)
         {
             var queryResult = new QueryResult<IQueryable<T>>();
 

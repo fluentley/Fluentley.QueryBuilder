@@ -1,6 +1,6 @@
 ﻿namespace Fluentley.QueryBuilder.Models
 {
-    public interface IQueryResult<T>
+    public interface IQueryResult<out T>
     {
         QueryPaging Paging { get; }
         T Data { get; }

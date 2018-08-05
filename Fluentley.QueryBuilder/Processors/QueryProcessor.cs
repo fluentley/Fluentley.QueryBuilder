@@ -5,7 +5,7 @@ namespace Fluentley.QueryBuilder.Processors
 {
     internal class OptionProcessor
     {
-        public TOption Process<TInterfaceOption, TOption, TData>(Action<TInterfaceOption> optionAction,
+        public static TOption Process<TInterfaceOption, TOption, TData>(Action<TInterfaceOption> optionAction,
             IQueryable<TData> data)
             where TOption : TInterfaceOption
         {
