@@ -12,7 +12,7 @@ namespace Tests.Fluentley.QueryBuilder
     public class QueryBuilderTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void SimpleIntegrationTest()
         {
             var list = new List<Person>
             {
