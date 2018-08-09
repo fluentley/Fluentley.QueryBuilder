@@ -19,7 +19,12 @@ PM> Install-Package Fluentley.QueryBuilder
 
 Quick Start
 -----------
-Sample Model
+
+**Sample Model**
+
+------------
+
+
 ```csharp
 public class Person
         {
@@ -34,7 +39,9 @@ public class Person
         }
 ```
 
-Sample Data
+**Sample Data**
+
+------------
 ```csharp
      var list = new List<Person>
                 {
@@ -46,11 +53,9 @@ Sample Data
                 };
 ```
 
-Query Sample
+**Query Sample**
 
 ------------
-
-
 ```csharp
 //Use complex query as variable.
       Action<IQueryOption<Person>> queryOption = option => option
@@ -61,13 +66,10 @@ Query Sample
        IQueryResult<Person> queryResult = list.QueryOn(queryOption);
 ```
  `IQueryResult<T>` interface contains properties such as `Data` property which is basically always returns type of ```IQueryable<T>```, which means we can still apply filters before the execution.
- 
- Eagerloads
- 
+
+** Eagerloads**
 
 ------------
-
-
  `EagerLoads`  as name implies used for eagerloading entities.
  ```csharp
       foreach (var eagerLoad in queryResult.EagerLoads)
@@ -75,12 +77,12 @@ Query Sample
 ```
 
 
- Paging
+** Paging**
 
 ------------
 
 
- `QueryPaging` class can be used for any type of in memory or `DataSet<T>` paging.
+ `QueryPaging` class can be used for any type of in memory or in case of EntityFramework `DataSet<T>` paging.
  
  ```csharp
      public class QueryPaging
@@ -91,9 +93,3 @@ Query Sample
             public bool IsPaged { get; set; }
         }
 ```
-Paging support for any type.
- 
-
-
-
-
