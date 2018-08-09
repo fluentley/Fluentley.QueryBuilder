@@ -65,8 +65,7 @@ public class Person
 ```
  `IQueryResult<T>` interface contains properties such as `Data` property which is basically always returns type of ```IQueryable<T>```, which means we can still apply filters before the execution.
 
-** Eagerloads**
-
+#### Eagerloads
 ------------
  `EagerLoads`  as name implies used for eagerloading entities.
  ```csharp
@@ -75,10 +74,8 @@ public class Person
 ```
 
 
-** Paging**
-
+#### Paging
 ------------
-
 
  `QueryPaging` class can be used for any type of in memory or in case of EntityFramework `DataSet<T>` paging.
  
@@ -91,4 +88,3 @@ public class Person
             public bool IsPaged { get; set; }
         }
 ```
- 
