@@ -20,10 +20,10 @@ PM> Install-Package Fluentley.QueryBuilder
 Quick Start
 -----------
 
-**Sample Model**
+Fluentley.QueryBuilder is an extension method for IQueryable types, can be utilized by using `.QueryOn()` Whole idea behind it to seperate complex queries from the list. Which gives ability to use it as parameter, property or etc.
 
+#### Sample Model
 ------------
-
 
 ```csharp
 public class Person
@@ -39,8 +39,7 @@ public class Person
         }
 ```
 
-**Sample Data**
-
+#### Sample Data
 ------------
 ```csharp
      var list = new List<Person>
@@ -53,8 +52,7 @@ public class Person
                 };
 ```
 
-**Query Sample**
-
+#### Query Sample
 ------------
 ```csharp
 //Use complex query as variable.
@@ -93,3 +91,4 @@ public class Person
             public bool IsPaged { get; set; }
         }
 ```
+ 
