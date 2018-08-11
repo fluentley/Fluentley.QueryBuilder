@@ -9,6 +9,6 @@ namespace Fluentley.QueryBuilder.Models
     {
         QueryPaging Paging { get; }
         IQueryable<T> Data { get; }
-         List<Expression<Func<T, object>>> EagerLoads { get; set; }
+        List<Expression<Func<T, object>>> EagerLoads { get; set; }
     }
 }

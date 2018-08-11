@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fluentley.QueryBuilder;
-using Fluentley.QueryBuilder.Models;
 using Fluentley.QueryBuilder.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -29,7 +28,7 @@ namespace Tests.Fluentley.QueryBuilder
                     .DynamicWhere("x=> x.Name != \"Gabriealla\"")
                 ;
 
-            IQueryResult<Person> queryResult = list.QueryOn(queryOption);
+            var queryResult = list.QueryOn(queryOption);
             Assert.AreEqual(1, queryResult.Data.Count());
         }
 
