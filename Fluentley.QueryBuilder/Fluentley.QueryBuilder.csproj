@@ -18,7 +18,7 @@
    
     <NeutralLanguage>en-US</NeutralLanguage>
    
-    <Version>1.0.0-alpha.1.8</Version>
+    <Version>1.0.0-alpha.1.9</Version>
    
     <PackageProjectUrl>https://github.com/fluentley/Fluentley.QueryBuilder</PackageProjectUrl>
    
@@ -32,7 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.8.18" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.9" />
   </ItemGroup>
 
 </Project>
