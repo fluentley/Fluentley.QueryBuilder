@@ -11,4 +11,11 @@ namespace Fluentley.QueryBuilder.Models
         IQueryable<T> Data { get; }
         List<Expression<Func<T, object>>> EagerLoads { get; set; }
     }
+
+    public interface IQueryResult<T, TSelect>
+    {
+        QueryPaging Paging { get; }
+        IQueryable<TSelect> Data { get; }
+        List<Expression<Func<T, object>>> EagerLoads { get; set; }
+    }
 }

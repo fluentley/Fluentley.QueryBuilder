@@ -28,6 +28,7 @@ namespace Tests.Fluentley.QueryBuilder
                     .DynamicWhere("x=> x.Name != \"Gabriealla\"")
                 ;
 
+
             var queryResult = list.QueryOn(queryOption);
             Assert.AreEqual(1, queryResult.Data.Count());
         }

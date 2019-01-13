@@ -6,9 +6,9 @@
    
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
    
-    <Copyright>Copyright © Fluentley 2018</Copyright>
+    <Copyright>Copyright © Fluentley 2019</Copyright>
    
-    <Description>Fluentley QueryBuilder focuses on advanced query abstraction for queryable objects.</Description>
+    <Description>Added Selectors</Description>
    
     <Authors>Emre@Fluentley</Authors>
    
@@ -18,7 +18,7 @@
    
     <NeutralLanguage>en-US</NeutralLanguage>
    
-    <Version>1.0.0-alpha.1.9</Version>
+    <Version>1.0.0-alpha.1.11</Version>
    
     <PackageProjectUrl>https://github.com/fluentley/Fluentley.QueryBuilder</PackageProjectUrl>
    
@@ -32,7 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.9" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.9.2" />
   </ItemGroup>
 
 </Project>
