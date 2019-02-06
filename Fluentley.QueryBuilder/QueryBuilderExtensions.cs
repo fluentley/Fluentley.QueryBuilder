@@ -33,7 +33,6 @@ namespace Fluentley.QueryBuilder
         {
             var processed = OptionProcessor.Process<IQueryOption<T>, QueryOption<T>, T>(queryAction, queryable);
             return ResultProcessor.Process(processed, selector);
-
         }
 
         public static IQueryResult<T> QueryOn<T>(this IEnumerable<T> queryable,

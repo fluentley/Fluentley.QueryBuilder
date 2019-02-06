@@ -29,8 +29,7 @@ namespace Fluentley.QueryBuilder.Processors
             return queryResult;
         }
 
-
-        public IQueryResult<T,TSelect> Process<T,TSelect>(QueryOption<T> processedQueryOption, Expression<Func<T, TSelect>> selector)
+        public IQueryResult<T, TSelect> Process<T, TSelect>(QueryOption<T> processedQueryOption, Expression<Func<T, TSelect>> selector)
         {
             var queryResult = new QueryResult<T, TSelect>();
 
@@ -41,8 +40,8 @@ namespace Fluentley.QueryBuilder.Processors
                     IsPaged = true,
                     CurrentPageIndex = processedQueryOption.PageIndex,
                     TotalPages =
-                        (int)Math.Ceiling(processedQueryOption.QueryWithNoPaging.Count() /
-                                          (double)processedQueryOption.PageSize),
+                        (int) Math.Ceiling(processedQueryOption.QueryWithNoPaging.Count() /
+                                           (double) processedQueryOption.PageSize),
                     TotalRecords = processedQueryOption.QueryWithNoPaging.Count()
                 };
 
