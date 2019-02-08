@@ -22,7 +22,6 @@ namespace Fluentley.QueryBuilder.Options
         public bool IsPaged { get; set; }
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
-
         public IQueryable<T> Query { get; set; }
         public IQueryable<T> QueryWithNoPaging { get; set; }
 
